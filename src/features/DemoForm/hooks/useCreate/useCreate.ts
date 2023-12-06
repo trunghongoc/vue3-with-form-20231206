@@ -10,7 +10,13 @@ export const useCreateV1 = () => {
   const loading = ref<boolean>(false);
 
   // call API for saving to Database
-  const mutation = (payload: any) => {
+  const mutate = (
+    payload: any,
+    options?: {
+      onSuccess: (data) => void;
+      onError: (error) => void;
+    }
+  ) => {
     // set loading true, and error = undefined before start API call
     loading.value = true;
     error.value = undefined;
@@ -25,9 +31,11 @@ export const useCreateV1 = () => {
     // if success
     data.value = translate({}); // data.value = translate(response.data)
     success.value = true;
+    options?.onSuccess?.(data.value);
 
     // if error
     error.value = {}; // error.value = response.error
+    options?.onSuccess?.(error);
 
     // finally set loading flag to false
     loading.value = false;
@@ -39,7 +47,7 @@ export const useCreateV1 = () => {
     success,
     error,
     loading,
-    mutation,
+    mutate,
   });
 };
 

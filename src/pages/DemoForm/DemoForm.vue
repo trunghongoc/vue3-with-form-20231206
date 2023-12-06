@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { provide } from 'vue'
 import { useGetTags } from '../../features/DemoForm/hooks/useGetTags'
+import { useCreate } from '../../features/DemoForm/hooks/useCreate/useCreate'
 import FormInput from '../../components/FormInput.vue'
 import Actions from './components/Actions.vue'
 import WrapperOfActions from './components/WrapperOfActions.vue'
@@ -53,6 +54,18 @@ const form = initForm()
 provide<FormContextType>('form', form)
 
 /**
+ * Init API for submittion
+ * submittion = {
+    data,
+    success,
+    error,
+    loading,
+    mutation,
+  }
+*/
+const submittion = useCreate()
+
+/**
  * on submit form, this function will be called and do these steps sequentially
  * 1. Validate form data (follow above validation rules - defined at line 42)
  * 2. If validate get failed. Stop. Show errors.
@@ -60,6 +73,12 @@ provide<FormContextType>('form', form)
  */
 const onSubmit = form.handleSubmit(values => {
   alert(JSON.stringify(values, null, 2));
+
+  /**
+   * make api call to save data to Database
+   * The result will be reactive, automatically update value to all variables (line 59-62)
+  */
+  // submittion.mutate(values)
 })
 
 /**

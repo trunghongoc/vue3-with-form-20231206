@@ -11,9 +11,10 @@
        -->
       <FormInput name="email" type="email"
         label="Email (try to input an invalid email and click submit to see the error)" />
-      <FormInput name="name" type="text" label="Name" />
-      <FormInput name="password" type="text" label="Password" />
-      <FormInput name="passwordConfirm" type="text" label="Password Confirm" />
+      <FormInput name="name" type="text" label="Name (required)" />
+      <FormInput name="password" type="text" label="Password (required, has at least 6 characters)" />
+      <FormInput name="passwordConfirm" type="text"
+        label="Password Confirm (required, has at least 6 characters, need exactly same above password)" />
     </div>
 
     <div class="actions">

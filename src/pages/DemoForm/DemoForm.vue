@@ -9,7 +9,8 @@
         These input fields will be handled by vee-validate form (https://www.npmjs.com/package/vee-validate).
         And the validate will be handled by yup (https://www.npmjs.com/package/yup)
        -->
-      <FormInput name="email" type="email" label="Email" />
+      <FormInput name="email" type="email"
+        label="Email (try to input an invalid email and click submit to see the error)" />
       <FormInput name="name" type="text" label="Name" />
       <FormInput name="password" type="text" label="Password" />
       <FormInput name="passwordConfirm" type="text" label="Password Confirm" />
